@@ -1,5 +1,9 @@
 package com.bootstrap.springboot.controller;
 
+import java.util.Locale;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 )
 public class HelloController {
 
+	@Autowired
+    MessageSource messageSource;
 
     /**
      * @return Hello World!
@@ -24,5 +30,9 @@ public class HelloController {
         return "Hello World!";
     }
 
+    @GetMapping("/")
+    public String index(Locale locale) {
+        return messageSource.getMessage("ola", null, locale);
+    }
    
 }
