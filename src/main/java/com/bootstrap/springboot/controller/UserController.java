@@ -2,18 +2,14 @@ package com.bootstrap.springboot.controller;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -42,8 +38,6 @@ public class UserController {
 
 	@Autowired
     private UserService UserService;
-    
-	private Converter converter = new Converter();
 
     /**
      * Creates a {@link Product} from the referenced {@link ProductDTO}
@@ -73,7 +67,7 @@ public class UserController {
     	Optional<User> user = UserService.get(id);
 
     	if (user.isPresent()) {
-    		UserDTO userDTO = (UserDTO) converter.toModel(user.get());
+    		UserDTO userDTO = (UserDTO) Converter.toModel(user.get(), UserDTO.class);
     		return ResponseEntity.ok(userDTO);
     	}
     		 
@@ -93,7 +87,7 @@ public class UserController {
             path = ""
     )
     public List<UserDTO> getAll() {
-        return (List<UserDTO>)converter.toCollection(UserService.getAll());
+        return (List<UserDTO>)Converter.toCollection(UserService.getAll(), UserDTO.class);
     }
 
     /**

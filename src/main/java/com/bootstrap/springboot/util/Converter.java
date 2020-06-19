@@ -4,21 +4,20 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 
 public class Converter {
 
-	@Autowired
-    private ModelMapper modelMapper;
 	
-	 public Object toModel(Object user) {
-			return modelMapper.map(user , user.getClass());
+    private static  ModelMapper modelMapper = new ModelMapper();
+	
+	 public static <D> Object toModel(final Object user, Class<D> outClass) {
+			return modelMapper.map(user , outClass);
 
 		}
 	    
-	 public List<?> toCollection(List<?> users) {
+	 public static  <D> List<?> toCollection(List<?> users, Class<D> outClass) {
 			return users.stream()
-					.map(user -> toModel(user)).collect(Collectors.toList());
+					.map(user -> toModel(user, outClass)).collect(Collectors.toList());
 
 		}
 }

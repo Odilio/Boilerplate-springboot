@@ -25,6 +25,10 @@ public class UserService {
 	public Optional<User> get(Long id) {
 		return userRepository.findById(id);
 	}
+	
+	public User getByEmail(String email) {
+		return userRepository.findByEmail(email);
+	}
 
 	public List<User> getAll() {
 		// TODO Auto-generated method stub

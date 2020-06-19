@@ -31,9 +31,6 @@ public class User implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 
-	@Column(name="created_at")
-	private Timestamp createdAt;
-
 	@NotNull
 	@Column
 	private String email;
@@ -44,5 +41,7 @@ public class User implements Serializable {
 	@Column
 	private String password;
 
+	@Column(name="created_at")
+	private Timestamp createdAt;
 
 }
