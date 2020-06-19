@@ -3,12 +3,9 @@ package com.bootstrap.springboot.service;
 import java.util.List;
 import java.util.Optional;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bootstrap.springboot.dto.ProductDTO;
 import com.bootstrap.springboot.model.User;
 import com.bootstrap.springboot.repository.UserRepository;
 

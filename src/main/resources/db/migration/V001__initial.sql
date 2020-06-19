@@ -6,3 +6,10 @@ CREATE TABLE users (
   created_at TIMESTAMP,
   PRIMARY KEY (id)
 ) ;
+
+CREATE TABLE products (
+  id int NOT NULL AUTO_INCREMENT,
+  name varchar(100) NOT NULL,
+  created_at TIMESTAMP,
+  PRIMARY KEY (id)
+) ;

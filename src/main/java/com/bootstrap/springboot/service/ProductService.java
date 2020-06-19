@@ -16,12 +16,8 @@ import com.bootstrap.springboot.repository.ProductRepository;
 @Service
 public class ProductService {
 
-    private final ProductRepository productRepository;
-
-    @Autowired
-    public ProductService(final ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
+	@Autowired
+    private ProductRepository productRepository;
 
     public void create(final ProductDTO productDTO) {
         productRepository.create(getDTOConverter().apply(productDTO));

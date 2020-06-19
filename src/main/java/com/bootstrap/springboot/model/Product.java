@@ -1,6 +1,7 @@
 package com.bootstrap.springboot.model;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,6 +27,9 @@ public class Product implements Serializable {
 	@Column
     private String name;
     
+	@Column(name="created_at")
+	private Timestamp createdAt;
+	
     public Product() {
     }
 
