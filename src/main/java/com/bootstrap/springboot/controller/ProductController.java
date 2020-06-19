@@ -21,6 +21,8 @@ import com.bootstrap.springboot.dto.ProductDTO;
 import com.bootstrap.springboot.model.Product;
 import com.bootstrap.springboot.service.ProductService;
 
+import io.swagger.annotations.Api;
+
 /**
  * A Spring {@link RestController} used to showcase the modeling of a REST controller for CRUD operations
  *
@@ -30,6 +32,7 @@ import com.bootstrap.springboot.service.ProductService;
 @RequestMapping(
         path = "/product"
 )
+@Api(value = "Product")
 public class ProductController {
 
     private final ProductService productService;

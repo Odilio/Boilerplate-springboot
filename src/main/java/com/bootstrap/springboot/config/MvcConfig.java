@@ -1,4 +1,4 @@
-package com.bootstrap.springboot;
+package com.bootstrap.springboot.config;
 
 import java.util.Locale;
 
