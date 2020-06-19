@@ -1,10 +1,14 @@
 package com.bootstrap.springboot.controller;
 
 import java.util.List;
+import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -43,7 +47,7 @@ public class ProductController {
      * @return a {@link ResponseEntity} with the appropriate {@link HttpStatus}
      */
     @PostMapping
-    public ResponseEntity<HttpStatus> create(@RequestBody ProductDTO productDTO) {
+    public ResponseEntity<HttpStatus> create(@Valid @RequestBody ProductDTO productDTO) {
         productService.create(productDTO);
         return ResponseEntity.ok(HttpStatus.OK);
     }
@@ -59,8 +63,13 @@ public class ProductController {
             method = RequestMethod.GET,
             path = "/{id}"
     )
-    public ProductDTO getProduct(@PathVariable final int id) {
-        return productService.get(id);
+    public ResponseEntity<ProductDTO> getProduct(@PathVariable final int id) {
+    	ProductDTO prod = productService.get(id);
+    	
+    	if (prod != null)
+    		 ResponseEntity.ok(prod);
+    	
+        return ResponseEntity.notFound().build();
     }
 
     /**

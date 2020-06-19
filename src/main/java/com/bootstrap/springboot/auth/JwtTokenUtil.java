@@ -58,7 +58,7 @@ return doGenerateToken(claims, userDetails.getUsername());
 private String doGenerateToken(Map<String, Object> claims, String subject) {
 return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
 .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
-.signWith(SignatureAlgorithm.HS512, secret).compact();
+.signWith(SignatureAlgorithm.HS256, secret).compact();
 }
 
 //valida o token

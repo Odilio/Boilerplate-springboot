@@ -11,11 +11,16 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+import com.sun.istack.NotNull;
+
+import lombok.Data;
+
 
 /**
  * The persistent class for the users database table.
  * 
  */
+@Data
 @Entity
 @Table(name="users")
 @NamedQuery(name="User.findAll", query="SELECT u FROM User u")
@@ -29,10 +34,14 @@ public class User implements Serializable {
 	@Column(name="created_at")
 	private Timestamp createdAt;
 
+	@NotNull
+	@Column
 	private String email;
 
+	@Column
 	private String name;
 
+	@Column
 	private String password;
 
 
