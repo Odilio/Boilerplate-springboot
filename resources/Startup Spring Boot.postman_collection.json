@@ -9,6 +9,16 @@
 		{
 			"name": "Create Product",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzcHJpbmd1c2VyIiwiaWF0IjoxNTkyNTMxMTE5LCJleHAiOjE1OTI1NDkxMTl9.1sUADjVFSaGTscLrIGVxJsMPuiephNi2USOpPOuMxfw",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"url": {
@@ -32,7 +42,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t\"username\": \"springuser\",\r\n\t\"password\": \"password\"\r\n}",
+					"raw": "{\r\n\t\"username\": \"odilionoronha@gmail.com\",\r\n\t\"password\": \"password\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -48,6 +58,36 @@
 					"port": "8080",
 					"path": [
 						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User By Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzcHJpbmd1c2VyIiwiaWF0IjoxNTkyNTg1MTA3LCJleHAiOjE1OTI2MDMxMDd9.WsDHVWY41oJZJlkE05C9C_sc1U5kH6IsMBgnwJ4L9MY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/user/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"1"
 					]
 				}
 			},

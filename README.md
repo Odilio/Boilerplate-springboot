@@ -8,7 +8,7 @@
 	Spring Data JPA + Bean Validation
 	Database updates with flyway
 	Automated JSON API documentation for API's with Springfox/Swagger 2
-	Authenticarion system using JWT
+	Authentication system using JWT
 	Encrypted Password using bcrypt
 	Converter to DTOs using ModelMapper
 	Getters/Setters, Constructors Auto Generating with Lombok
