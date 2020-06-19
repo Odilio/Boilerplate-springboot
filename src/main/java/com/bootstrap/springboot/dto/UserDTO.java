@@ -1,4 +1,4 @@
-package com.bootstrap.springboot.model;
+package com.bootstrap.springboot.dto;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -21,27 +21,18 @@ import lombok.Data;
  * 
  */
 @Data
-@Entity
-@Table(name="users")
-@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
-public class User implements Serializable {
+public class UserDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	private int id;
 
-	@Column(name="created_at")
 	private Timestamp createdAt;
 
 	@NotNull
-	@Column
 	private String email;
 
-	@Column
 	private String name;
 
-	@Column
 	private String password;
 
 

@@ -40,6 +40,7 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+		<!-- to not have to declare getters and setters  -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -49,6 +50,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+		<!-- to do auth using jwt token -->
 		<dependency>
 		    <groupId>io.jsonwebtoken</groupId>
 		    <artifactId>jjwt-api</artifactId>
@@ -66,6 +68,7 @@
 		    <version>0.11.2</version>
 		    <scope>runtime</scope>
 		</dependency>
+		<!-- to use swagger2 on our api -->
 		<dependency>
 		    <groupId>io.springfox</groupId>
 		    <artifactId>springfox-swagger2</artifactId>
@@ -76,6 +79,12 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>2.9.2</version>
 			<scope>compile</scope>
+		</dependency>
+		<!-- to mapping our model on dto -->
+		<dependency>
+		  <groupId>org.modelmapper</groupId>
+		  <artifactId>modelmapper</artifactId>
+		  <version>2.3.0</version>
 		</dependency>
 		<dependency>
             <groupId>com.h2database</groupId>

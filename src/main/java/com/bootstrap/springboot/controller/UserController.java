@@ -2,6 +2,7 @@ package com.bootstrap.springboot.controller;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -19,8 +20,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bootstrap.springboot.dto.ProductDTO;
+import com.bootstrap.springboot.dto.UserDTO;
 import com.bootstrap.springboot.model.Product;
-import com.bootstrap.springboot.service.ProductService;
+import com.bootstrap.springboot.model.User;
+import com.bootstrap.springboot.service.UserService;
+import com.bootstrap.springboot.util.Converter;
 
 import io.swagger.annotations.Api;
 
@@ -31,17 +35,16 @@ import io.swagger.annotations.Api;
  */
 @RestController
 @RequestMapping(
-        path = "/product"
+        path = "/user"
 )
-@Api(value = "Product")
-public class ProductController {
+@Api(value = "User")
+public class UserController {
 
 	@Autowired
-    private ProductService productService;
+    private UserService UserService;
     
-	@Autowired
-    private ModelMapper modelMapper;
-    
+	private Converter converter = new Converter();
+
     /**
      * Creates a {@link Product} from the referenced {@link ProductDTO}
      *
@@ -50,8 +53,8 @@ public class ProductController {
      * @return a {@link ResponseEntity} with the appropriate {@link HttpStatus}
      */
     @PostMapping
-    public ResponseEntity<HttpStatus> create(@Valid @RequestBody ProductDTO productDTO) {
-        productService.create(productDTO);
+    public ResponseEntity<HttpStatus> create(@Valid @RequestBody User user) {
+        UserService.create(user);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
@@ -66,14 +69,19 @@ public class ProductController {
             method = RequestMethod.GET,
             path = "/{id}"
     )
-    public ResponseEntity<ProductDTO> getProduct(@PathVariable final int id) {
-    	ProductDTO prod = productService.get(id);
-    	
-    	if (prod != null)
-    		 ResponseEntity.ok(prod);
+    public ResponseEntity<UserDTO> get(@PathVariable final Long id) {
+    	Optional<User> user = UserService.get(id);
+
+    	if (user.isPresent()) {
+    		UserDTO userDTO = (UserDTO) converter.toModel(user.get());
+    		return ResponseEntity.ok(userDTO);
+    	}
+    		 
     	
         return ResponseEntity.notFound().build();
     }
+    
+   
 
     /**
      * Reads all the existing {@link Product}s
@@ -84,32 +92,34 @@ public class ProductController {
             method = RequestMethod.GET,
             path = ""
     )
-    public List<ProductDTO> getAll() {
-        return productService.getAll();
+    public List<UserDTO> getAll() {
+        return (List<UserDTO>)converter.toCollection(UserService.getAll());
     }
 
     /**
      * Updates the {@link Product} with the specified ID with the details from the referenced {@link Product}
      *
      * @return a {@link ResponseEntity} with the appropriate {@link HttpStatus}
-     */
+    
     @PutMapping("/{id}")
-    public ResponseEntity<HttpStatus> update(@PathVariable final int id, @RequestBody ProductDTO productDTO) {
-        productService.update(id, productDTO);
+    public ResponseEntity<HttpStatus> update(@PathVariable final int id, @RequestBody User user) {
+        UserService.update(id, user);
         return ResponseEntity.ok(HttpStatus.OK);
-    }
+    } */
 
     /**
      * Deletes the {@link Product} with the specified ID
      *
      * @return a {@link ResponseEntity} with the appropriate {@link HttpStatus}
-     */
+   
     @RequestMapping(
             method = RequestMethod.DELETE,
             path = "/{id}"
     )
     public ResponseEntity<HttpStatus> delete(@PathVariable final int id) {
-        productService.delete(id);
+        UserService.delete(id);
         return ResponseEntity.ok(HttpStatus.OK);
-    }
+    }  */
+  
+    
 }
