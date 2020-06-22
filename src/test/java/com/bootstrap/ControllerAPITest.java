@@ -5,6 +5,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.util.Optional;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -39,8 +41,9 @@ public class ControllerAPITest {
 
     @Test
     public void shouldReturnNameProduct() throws Exception {
-        Product product = new Product(1, "Pan");
-        given(productRepository.get(1)).willReturn(product);
+    	Long number = 1l;
+        Optional<Product> product = Optional.of(new Product(number, "Pan"));
+        given(productRepository.findById(number)).willReturn(product);
 
         mockMvc.perform(get("/product/1"))
                 .andExpect(jsonPath("$.id").value(1))

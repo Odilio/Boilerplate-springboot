@@ -2,9 +2,7 @@ package com.bootstrap.springboot.service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,16 +17,15 @@ public class ProductService {
 	@Autowired
     private ProductRepository productRepository;
 
-    public void create(final ProductDTO productDTO) {
-        productRepository.save(getDTOConverter().apply(productDTO));
+    public void create(final Product productDTO) {
+        productRepository.save(productDTO);
     }
 
-    public ProductDTO get(final int id) {
-        final Product product =
-                Optional.ofNullable(productRepository.findById(id))
-                        .orElseThrow(() -> new IllegalArgumentException("There is no product with the id " + id));
+    public Optional<Product> get(Long id) {
+        final Optional<Product> product =
+                productRepository.findById(id);
 
-        return getProductConverter().apply(product);
+        return product;
     }
 
     public List<Product> getAll() {
@@ -43,13 +40,6 @@ public class ProductService {
         //TODO
     }
 
-    private Function<ProductDTO, Product> getDTOConverter() {
-        return dto -> new Product(dto.getId(), dto.getProductName());
-    }
-
-    private Function<Product, ProductDTO> getProductConverter() {
-        return product -> new ProductDTO(product.getId(), product.getName());
-    }
 
     private Predicate<Product> filterItem() {
         return product -> !product.getName().isEmpty() || product.getId() < 50;

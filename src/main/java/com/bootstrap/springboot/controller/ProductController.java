@@ -5,11 +5,9 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -19,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bootstrap.springboot.dto.ProductDTO;
-import com.bootstrap.springboot.dto.UserDTO;
 import com.bootstrap.springboot.model.Product;
 import com.bootstrap.springboot.service.ProductService;
 import com.bootstrap.springboot.util.Converter;
@@ -50,8 +47,8 @@ public class ProductController {
      * @return a {@link ResponseEntity} with the appropriate {@link HttpStatus}
      */
     @PostMapping
-    public ResponseEntity<HttpStatus> create(@Valid @RequestBody ProductDTO productDTO) {
-        productService.create(productDTO);
+    public ResponseEntity<HttpStatus> create(@Valid @RequestBody Product product) {
+        productService.create(product);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
@@ -66,11 +63,14 @@ public class ProductController {
             method = RequestMethod.GET,
             path = "/{id}"
     )
-    public ResponseEntity<ProductDTO> getProduct(@PathVariable final int id) {
-    	ProductDTO prod = productService.get(id);
+    public ResponseEntity<ProductDTO> getProduct(@PathVariable Long id) {
+    	Optional<Product> prod = productService.get(id);
     	
-    	if (prod != null)
-    		 ResponseEntity.ok(prod);
+    	if (prod != null) {
+    		ProductDTO prodDTO = (ProductDTO) Converter.toModel(prod.get(), ProductDTO.class);
+    		 ResponseEntity.ok(prodDTO);
+    	}
+    		
     	
         return ResponseEntity.notFound().build();
     }

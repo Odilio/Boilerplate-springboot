@@ -2,6 +2,9 @@ package com.bootstrap;
 import static io.restassured.RestAssured.when;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.core.Is.is;
+
+import java.util.Optional;
+
 import static org.hamcrest.Matchers.equalTo;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -36,8 +39,9 @@ public class RestAssuredTest {
 
     @Test
     public void shouldReturnProduct() throws Exception {
-    	 Product product = new Product(1, "Pan");
-    	 productRepository.create(product);
+    	 Long number = 1l;
+         Optional<Product> product = Optional.of(new Product(number, "Pan"));
+    	 productRepository.save(product.get());
 
         when()
                 .get(String.format("http://localhost:%s/product/1", port))

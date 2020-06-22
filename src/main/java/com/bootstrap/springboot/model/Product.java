@@ -22,7 +22,7 @@ public class Product implements Serializable {
 	@Id
 	@Column
 	@NotNull
-    private int id;
+    private Long id;
 
 	@Column
     private String name;
@@ -33,7 +33,7 @@ public class Product implements Serializable {
     public Product() {
     }
 
-    public Product(int id, String name) {
+    public Product(Long id, String name) {
         this.id = id; this.name = name;
     }
 
