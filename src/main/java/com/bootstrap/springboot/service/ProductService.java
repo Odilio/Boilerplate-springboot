@@ -20,31 +20,27 @@ public class ProductService {
     private ProductRepository productRepository;
 
     public void create(final ProductDTO productDTO) {
-        productRepository.create(getDTOConverter().apply(productDTO));
+        productRepository.save(getDTOConverter().apply(productDTO));
     }
 
     public ProductDTO get(final int id) {
         final Product product =
-                Optional.ofNullable(productRepository.get(id))
+                Optional.ofNullable(productRepository.findById(id))
                         .orElseThrow(() -> new IllegalArgumentException("There is no product with the id " + id));
 
         return getProductConverter().apply(product);
     }
 
-    public List<ProductDTO> getAll() {
-        return productRepository.getAll()
-                                .parallelStream()
-                                .filter(filterItem())
-                                .map(getProductConverter())
-                                .collect(Collectors.toList());
+    public List<Product> getAll() {
+        return productRepository.findAll();
     }
 
     public void update(final int id, final ProductDTO productDTO) {
-        productRepository.update(id, getDTOConverter().apply(productDTO));
+       // productRepository.update(id, getDTOConverter().apply(productDTO));
     }
 
     public void delete(final int id) {
-        productRepository.delete(id);
+        //TODO
     }
 
     private Function<ProductDTO, Product> getDTOConverter() {

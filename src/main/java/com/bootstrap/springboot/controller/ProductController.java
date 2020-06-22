@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bootstrap.springboot.dto.ProductDTO;
+import com.bootstrap.springboot.dto.UserDTO;
 import com.bootstrap.springboot.model.Product;
 import com.bootstrap.springboot.service.ProductService;
+import com.bootstrap.springboot.util.Converter;
 
 import io.swagger.annotations.Api;
 
@@ -39,8 +41,6 @@ public class ProductController {
 	@Autowired
     private ProductService productService;
     
-	@Autowired
-    private ModelMapper modelMapper;
     
     /**
      * Creates a {@link Product} from the referenced {@link ProductDTO}
@@ -85,7 +85,7 @@ public class ProductController {
             path = ""
     )
     public List<ProductDTO> getAll() {
-        return productService.getAll();
+        return (List<ProductDTO>)Converter.toCollection(productService.getAll(), ProductDTO.class);
     }
 
     /**
