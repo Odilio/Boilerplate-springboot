@@ -1,5 +1,8 @@
 package com.bootstrap.springboot.controller;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -66,6 +69,7 @@ public class UserController {
 
     	if (user.isPresent()) {
     		UserDTO userDTO = (UserDTO) Converter.toModel(user.get(), UserDTO.class);
+    		userDTO.add(linkTo(methodOn(UserController.class).get(id)).withSelfRel());
     		return ResponseEntity.ok(userDTO);
     	}
     		 

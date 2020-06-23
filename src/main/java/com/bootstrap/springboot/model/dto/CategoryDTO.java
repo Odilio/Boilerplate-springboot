@@ -20,6 +20,9 @@ public class CategoryDTO extends RepresentationModel <CategoryDTO> implements Se
 
     private String productName;
 
+    public CategoryDTO() {  
+    }
+    
     public CategoryDTO(final int id, final String productName) {
         this.id = id; this.productName = productName;
     }

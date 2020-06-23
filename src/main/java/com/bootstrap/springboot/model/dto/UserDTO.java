@@ -3,6 +3,8 @@ package com.bootstrap.springboot.model.dto;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+import org.springframework.hateoas.RepresentationModel;
+
 import lombok.Data;
 
 /**
@@ -10,7 +12,7 @@ import lombok.Data;
  * 
  */
 @Data
-public class UserDTO implements Serializable {
+public class UserDTO extends RepresentationModel <UserDTO> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Long id;

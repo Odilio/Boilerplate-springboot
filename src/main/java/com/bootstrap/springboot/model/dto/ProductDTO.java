@@ -6,6 +6,7 @@ import org.springframework.hateoas.RepresentationModel;
 
 import com.bootstrap.springboot.model.Product;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,6 +17,7 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class ProductDTO extends RepresentationModel <ProductDTO> implements Serializable {
 
     private int id;
@@ -24,8 +26,5 @@ public class ProductDTO extends RepresentationModel <ProductDTO> implements Seri
 
     private CategoryDTO categoryDTO;
     
-    public ProductDTO(final int id, final String productName) {
-        this.id = id; this.productName = productName;
-    }
 
 }
