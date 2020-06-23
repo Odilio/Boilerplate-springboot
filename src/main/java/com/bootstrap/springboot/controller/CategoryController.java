@@ -23,7 +23,7 @@ import com.bootstrap.springboot.util.Converter;
 
 
 /**
- * A Spring {@link RestController} used to showcase the modeling of a REST controller for CRUD operations
+ * A Spring {@link RestController} used to modeling of a REST controller for Category CRUD operations
  *
  * @author Odilio Noronha Filho
  */

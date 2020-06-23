@@ -2,6 +2,7 @@ package com.bootstrap.springboot.controller;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -13,7 +14,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,7 +26,7 @@ import com.bootstrap.springboot.util.Converter;
 
 
 /**
- * A Spring {@link RestController} used to showcase the modeling of a REST controller for CRUD operations
+ * A Spring {@link RestController} used to modeling of a REST controller for Product CRUD operations
  *
  * @author Odilio Noronha Filho
  */
@@ -68,6 +68,7 @@ public class ProductController {
     	Optional<Product> prod = productService.get(id);
     	
     	if (prod != null) {
+    		// TODO Create a generic converter to HATEOAS
     		ProductDTO prodDTO = (ProductDTO) Converter.toModel(prod.get(), ProductDTO.class);
     		Link selfLink = linkTo(methodOn(CategoryController.class)
                     .getCategory(prod.get().getCategory().getId())).withSelfRel();
@@ -83,7 +84,7 @@ public class ProductController {
     /**
      * Reads all the existing {@link Product}s
      *
-     * @return the serialized {@link Product}s
+     * @return the serialized {@link ProductDTO}s
      */
     @RequestMapping(
             method = RequestMethod.GET,

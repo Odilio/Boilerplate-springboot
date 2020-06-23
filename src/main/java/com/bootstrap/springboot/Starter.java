@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * A small Spring Boot bootstrap app
+ * A Simple Spring Boot bootstrap app
  *
  * @author Odilio Noronha Filho
  */

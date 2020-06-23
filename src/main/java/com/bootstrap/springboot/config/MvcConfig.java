@@ -11,6 +11,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
+/**
+ * internationalization (i18n) TODO =/
+ *
+ * @author Odilio Noronha Filho
+ */
 @Component
 @ComponentScan(basePackages = "com.bootstrap.springboot")
 public class MvcConfig implements WebMvcConfigurer {

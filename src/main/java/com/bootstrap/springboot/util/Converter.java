@@ -5,6 +5,11 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 
+/**
+ * A Simple Converter to DTO from Model
+ *
+ * @author Odilio Noronha Filho
+ */
 public class Converter {
 
 	

@@ -1,4 +1,6 @@
 # Boilerplate-springboot
+	To start just run Starter main class on package com.bootstrap.springboot
+	To access swagger just go to http://localhost:8080/swagger-ui.html
 
 # Technology stack 
 	Spring Boot for application configuration
@@ -8,7 +10,7 @@
 	Spring HATEOAS
 	Spring Data JPA + Bean Validation
 	Database updates with flyway
-	Automated JSON API documentation for API's with Springfox/Swagger 2
+	Automated JSON API documentation for API's with SpringDoc/Swagger 2
 	Authentication system using JWT
 	Encrypted Password using bcrypt
 	Converter to DTOs using ModelMapper
