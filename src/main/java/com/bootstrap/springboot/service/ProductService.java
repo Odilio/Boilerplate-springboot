@@ -7,8 +7,8 @@ import java.util.function.Predicate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bootstrap.springboot.dto.ProductDTO;
 import com.bootstrap.springboot.model.Product;
+import com.bootstrap.springboot.model.dto.ProductDTO;
 import com.bootstrap.springboot.repository.ProductRepository;
 
 @Service

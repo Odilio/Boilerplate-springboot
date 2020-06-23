@@ -68,18 +68,11 @@
 		    <version>0.11.2</version>
 		    <scope>runtime</scope>
 		</dependency>
-		<!-- to use swagger2 on our api -->
 		<dependency>
-		    <groupId>io.springfox</groupId>
-		    <artifactId>springfox-swagger2</artifactId>
-		    <version>2.9.2</version>
-		</dependency>
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger-ui</artifactId>
-			<version>2.9.2</version>
-			<scope>compile</scope>
-		</dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-ui</artifactId>
+      <version>1.4.1</version>
+   </dependency>
 		<!-- to mapping our model on dto -->
 		<dependency>
 		  <groupId>org.modelmapper</groupId>
@@ -94,6 +87,10 @@
 		    <groupId>org.springframework.boot</groupId> 
 		    <artifactId>spring-boot-starter-validation</artifactId> 
 		</dependency>
+  		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-hateoas</artifactId>
+        </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>

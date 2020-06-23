@@ -15,14 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bootstrap.springboot.dto.ProductDTO;
-import com.bootstrap.springboot.dto.UserDTO;
 import com.bootstrap.springboot.model.Product;
 import com.bootstrap.springboot.model.User;
+import com.bootstrap.springboot.model.dto.ProductDTO;
+import com.bootstrap.springboot.model.dto.UserDTO;
 import com.bootstrap.springboot.service.UserService;
 import com.bootstrap.springboot.util.Converter;
 
-import io.swagger.annotations.Api;
 
 /**
  * A Spring {@link RestController} used to showcase the modeling of a REST controller for CRUD operations
@@ -33,7 +32,6 @@ import io.swagger.annotations.Api;
 @RequestMapping(
         path = "/user"
 )
-@Api(value = "User")
 public class UserController {
 
 	@Autowired

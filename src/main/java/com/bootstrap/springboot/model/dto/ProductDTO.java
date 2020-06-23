@@ -1,10 +1,13 @@
-package com.bootstrap.springboot.dto;
+package com.bootstrap.springboot.model.dto;
 
 import java.io.Serializable;
+
+import org.springframework.hateoas.RepresentationModel;
 
 import com.bootstrap.springboot.model.Product;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * A DTO (Data Transfer Object) used to serialize / deserialize {@link Product} objects
@@ -12,15 +15,15 @@ import lombok.Data;
  * @author Odilio Noronha Filho
  */
 @Data
-public class ProductDTO implements Serializable {
+@NoArgsConstructor
+public class ProductDTO extends RepresentationModel <ProductDTO> implements Serializable {
 
     private int id;
 
     private String productName;
 
-    public ProductDTO() {
-    }
-
+    private CategoryDTO categoryDTO;
+    
     public ProductDTO(final int id, final String productName) {
         this.id = id; this.productName = productName;
     }

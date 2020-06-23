@@ -1,4 +1,4 @@
-package com.bootstrap.springboot.dto;
+package com.bootstrap.springboot.model.dto;
 
 import java.io.Serializable;
 import java.sql.Timestamp;

@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.swagger.annotations.Api;
 
 /**
  * A Spring {@link RestController} used to showcase the modeling of a REST controller for CRUD operations
@@ -19,7 +18,7 @@ import io.swagger.annotations.Api;
 @RequestMapping(
         path = "/hello"
 )
-@Api(value = "Hello")
+
 public class HelloController {
 
 	@Autowired

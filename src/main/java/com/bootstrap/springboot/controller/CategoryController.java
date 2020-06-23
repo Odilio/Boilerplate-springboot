@@ -1,14 +1,11 @@
 package com.bootstrap.springboot.controller;
 
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.Link;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bootstrap.springboot.model.Product;
-import com.bootstrap.springboot.model.dto.ProductDTO;
-import com.bootstrap.springboot.service.ProductService;
+import com.bootstrap.springboot.model.Category;
+import com.bootstrap.springboot.model.dto.CategoryDTO;
+import com.bootstrap.springboot.service.CategoryService;
 import com.bootstrap.springboot.util.Converter;
 
 
@@ -32,48 +29,45 @@ import com.bootstrap.springboot.util.Converter;
  */
 @RestController
 @RequestMapping(
-        path = "/product"
+        path = "/category"
 )
-public class ProductController {
+
+public class CategoryController {
 
 	@Autowired
-    private ProductService productService;
+    private CategoryService productService;
     
     
     /**
-     * Creates a {@link Product} from the referenced {@link ProductDTO}
+     * Creates a {@link Category} from the referenced {@link CategoryDTO}
      *
-     * @param productDTO the {@link Product} to be created
+     * @param productDTO the {@link Category} to be created
      *
      * @return a {@link ResponseEntity} with the appropriate {@link HttpStatus}
      */
     @PostMapping
-    public ResponseEntity<HttpStatus> create(@Valid @RequestBody Product product) {
+    public ResponseEntity<HttpStatus> create(@Valid @RequestBody Category product) {
         productService.create(product);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
     /**
-     * Reads the {@link Product} with the specified id
+     * Reads the {@link Category} with the specified id
      *
-     * @param id the id of the requested {@link Product}
+     * @param id the id of the requested {@link Category}
      *
-     * @return the serialized {@link Product}
+     * @return the serialized {@link Category}
      */
     @RequestMapping(
             method = RequestMethod.GET,
             path = "/{id}"
     )
-    public ResponseEntity<ProductDTO> getProduct(@PathVariable Long id) {
-    	Optional<Product> prod = productService.get(id);
+    public ResponseEntity<CategoryDTO> getCategory(@PathVariable Long id) {
+    	Optional<Category> prod = productService.get(id);
     	
     	if (prod != null) {
-    		ProductDTO prodDTO = (ProductDTO) Converter.toModel(prod.get(), ProductDTO.class);
-    		Link selfLink = linkTo(methodOn(CategoryController.class)
-                    .getCategory(prod.get().getCategory().getId())).withSelfRel();
-    		prodDTO.getCategoryDTO().add(selfLink);
-    		prodDTO.add(linkTo(methodOn(ProductController.class).getProduct(id)).withSelfRel());
-    		ResponseEntity.ok(prodDTO);
+    		CategoryDTO prodDTO = (CategoryDTO) Converter.toModel(prod.get(), CategoryDTO.class);
+    		 ResponseEntity.ok(prodDTO);
     	}
     		
     	
@@ -81,31 +75,31 @@ public class ProductController {
     }
 
     /**
-     * Reads all the existing {@link Product}s
+     * Reads all the existing {@link Category}s
      *
-     * @return the serialized {@link Product}s
+     * @return the serialized {@link Category}s
      */
     @RequestMapping(
             method = RequestMethod.GET,
             path = ""
     )
-    public List<ProductDTO> getAll() {
-        return (List<ProductDTO>)Converter.toCollection(productService.getAll(), ProductDTO.class);
+    public List<CategoryDTO> getAll() {
+        return (List<CategoryDTO>)Converter.toCollection(productService.getAll(), CategoryDTO.class);
     }
 
     /**
-     * Updates the {@link Product} with the specified ID with the details from the referenced {@link Product}
+     * Updates the {@link Category} with the specified ID with the details from the referenced {@link Category}
      *
      * @return a {@link ResponseEntity} with the appropriate {@link HttpStatus}
-     
+     */
     @PutMapping("/{id}")
-    public ResponseEntity<HttpStatus> update(@PathVariable final int id, @RequestBody ProductDTO productDTO) {
-        productService.update(id, productDTO);
+    public ResponseEntity<HttpStatus> update(@PathVariable final int id, @RequestBody CategoryDTO productDTO) {
+        //productService.update(id, productDTO);
         return ResponseEntity.ok(HttpStatus.OK);
     }
-*/
+
     /**
-     * Deletes the {@link Product} with the specified ID
+     * Deletes the {@link Category} with the specified ID
      *
      * @return a {@link ResponseEntity} with the appropriate {@link HttpStatus}
      */
