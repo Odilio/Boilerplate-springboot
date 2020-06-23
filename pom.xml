@@ -69,10 +69,15 @@
 		    <scope>runtime</scope>
 		</dependency>
 		<dependency>
-      <groupId>org.springdoc</groupId>
-      <artifactId>springdoc-openapi-ui</artifactId>
-      <version>1.4.1</version>
-   </dependency>
+	      <groupId>org.springdoc</groupId>
+	      <artifactId>springdoc-openapi-ui</artifactId>
+	      <version>1.4.1</version>
+	   </dependency>
+	   <dependency>
+		  <groupId>org.springdoc</groupId>
+		  <artifactId>springdoc-openapi-security</artifactId>
+		  <version>1.4.1</version>
+		</dependency>
 		<!-- to mapping our model on dto -->
 		<dependency>
 		  <groupId>org.modelmapper</groupId>

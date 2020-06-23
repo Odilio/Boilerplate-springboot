@@ -4,7 +4,8 @@
 	Spring Boot for application configuration
 	Maven configuration for building, testing and running the application
 	Spring Security
-	Spring MVC REST + Jackson
+	Spring MVC REST
+	Spring HATEOAS
 	Spring Data JPA + Bean Validation
 	Database updates with flyway
 	Automated JSON API documentation for API's with Springfox/Swagger 2
