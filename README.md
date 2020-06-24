@@ -1,6 +1,7 @@
 # Boilerplate-springboot
 	To start just run Starter main class on package com.bootstrap.springboot
 	To access swagger just go to http://localhost:8080/swagger-ui.html
+	Postman Collecions inside folder resources
 
 # Technology stack 
 	Spring Boot for application configuration
