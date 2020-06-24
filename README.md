@@ -4,10 +4,12 @@
 
 # Technology stack 
 	Spring Boot for application configuration
+	Profiles Dev And Prod
 	Maven configuration for building, testing and running the application
 	Spring Security
 	Spring MVC REST
 	Spring HATEOAS
+	Internationalization I18n
 	Spring Data JPA + Bean Validation
 	Database updates with flyway
 	Automated JSON API documentation for API's with SpringDoc/Swagger 2
