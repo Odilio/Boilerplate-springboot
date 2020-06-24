@@ -1,7 +1,7 @@
 package com.bootstrap.springboot;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 
 /**
  * A Simple Spring Boot bootstrap app
@@ -12,6 +12,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Starter {
 
     public static void main(String[] args) {
-        SpringApplication.run(Starter.class, args);
+    	new SpringApplicationBuilder(Starter.class)
+        .profiles("dev")
+        .run(args);
     }
 }
