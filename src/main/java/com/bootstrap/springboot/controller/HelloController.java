@@ -4,8 +4,10 @@ import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -37,4 +39,10 @@ public class HelloController {
         return messageSource.getMessage("ola", null, locale);
     }
    
+    @GetMapping("/msg")
+    public String getMessage(@RequestParam("msg") String msg) {
+    	 Locale locale = LocaleContextHolder.getLocale();
+    	 System.out.println("aqui p locale" + locale.getCountry());
+       return messageSource.getMessage(msg, null, locale);
+    }
 }
