@@ -11,6 +11,7 @@
 	Spring HATEOAS
 	Internationalization I18n
 	Spring Data JPA + Bean Validation
+	Embedded Database with H2 for dev profile
 	Database updates with flyway
 	Automated JSON API documentation for API's with SpringDoc/Swagger 2
 	Authentication system using JWT
