@@ -5,6 +5,8 @@ import java.util.Optional;
 import java.util.function.Predicate;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.bootstrap.springboot.model.Product;
@@ -28,6 +30,13 @@ public class ProductService {
         return product;
     }
 
+    public Page<Product> getByName(String name, Pageable page) {
+        final Page<Product> product =
+                productRepository.findByNameContaining(name, page);
+        System.out.println(product.getContent().size()+ "tamanho");
+        return product;
+    }
+    
     public List<Product> getAll() {
         return productRepository.findAll();
     }

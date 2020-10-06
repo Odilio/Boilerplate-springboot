@@ -9,6 +9,10 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 import org.springframework.hateoas.Link;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -94,6 +98,29 @@ public class ProductController {
         return (List<ProductDTO>)Converter.toCollection(productService.getAll(), ProductDTO.class);
     }
 
+    
+    /**
+     * Reads the {@link Product} with the specified id
+     *
+     * @param id the id of the requested {@link Product}
+     *
+     * @return the serialized {@link Product}
+     */
+    @RequestMapping(
+            method = RequestMethod.GET,
+            path = "/name"
+    )
+    public List<Product> getProductByName(@Param(value = "page") String name, 
+    		@Param(value = "page") int page, 
+			@Param(value = "size") int size) {
+        Pageable requestedPage = PageRequest.of(page, size);
+    	Page<Product> prod = productService.getByName(name,requestedPage);
+    	System.out.println(prod.getContent().get(0).getName());
+    	
+    		return prod.getContent();
+    }
+    
+    
     /**
      * Updates the {@link Product} with the specified ID with the details from the referenced {@link Product}
      *

@@ -28,6 +28,7 @@ return getClaimFromToken(token, Claims::getSubject);
 
 //retorna expiration date do token jwt 
 public Date getExpirationDateFromToken(String token) {
+	System.out.println(" token expiration aqui " + getClaimFromToken(token, Claims::getExpiration));
 return getClaimFromToken(token, Claims::getExpiration);
 }
 
