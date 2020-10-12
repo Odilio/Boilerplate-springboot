@@ -6,11 +6,10 @@ import java.util.stream.Stream;
 
 public class FieldTest {
     public static void main(String[] args) throws Exception {
-
 	Username user = new Username();
 	System.out.println();
 	String countries = "100,Germany,England";
-
+	String deserialize = "";
 	Class<Username> clazz = Username.class;
 	
 	Field[] fields = clazz.getFields();
@@ -35,16 +34,16 @@ public class FieldTest {
 	Field fieldID = clazz.getField("id");
 	fieldID.set(user, 100);
 	
-	System.out.println("Id value set using reflection: " + user.id);
-	int id = fieldID.getInt(user);
-	System.out.println("Id value get using reflection: " + id);
-	System.out.println();
-	
-	Field fieldNAME = clazz.getDeclaredField("name");
-	fieldNAME.setAccessible(true);
-	fieldNAME.set(user, "Admin");
 	
 	System.out.println();
 	user.display();
+	
+	for (int i = 0; i < fields.length; i++) {
+		Field field = clazz.getField(fields[i].getName());
+		System.out.println(field.get(user));
+		deserialize += field.get(user) + ",";
+	}
+	
+	System.out.println(deserialize.substring(0, deserialize.length() - 1));
     }
 }
