@@ -27,3 +27,6 @@
 	
 #My Personal Blog
 	https://medium.com/rapaduratech
+	
+	http://helix-dwp.intraservice.corp/dwp/app/#/catalog
+	http://helix-smartit.intraservice.corp/smartit/app/#/ticket-console
