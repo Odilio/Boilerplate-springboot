@@ -23,6 +23,5 @@ public class Converter {
 	 public static  <D> List<?> toCollection(List<?> users, Class<D> outClass) {
 			return users.stream()
 					.map(user -> toModel(user, outClass)).collect(Collectors.toList());
-
 		}
 }

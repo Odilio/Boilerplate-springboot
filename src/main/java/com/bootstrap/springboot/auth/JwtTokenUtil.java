@@ -57,9 +57,12 @@ return doGenerateToken(claims, userDetails.getUsername());
 
 //Cria o token e devine tempo de expiração pra ele
 private String doGenerateToken(Map<String, Object> claims, String subject) {
-return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
-.setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
-.signWith(SignatureAlgorithm.HS256, secret).compact();
+	return Jwts.builder()
+			.setClaims(claims)
+			.setSubject(subject)
+			.setIssuedAt(new Date(System.currentTimeMillis()))
+			.setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
+			.signWith(SignatureAlgorithm.HS256, secret).compact();
 }
 
 //valida o token

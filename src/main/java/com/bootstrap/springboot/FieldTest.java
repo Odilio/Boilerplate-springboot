@@ -8,15 +8,16 @@ public class FieldTest {
     public static void main(String[] args) throws Exception {
 	Username user = new Username();
 	System.out.println();
-	String countries = "100,Germany,England";
+	String countries = "100,Germany";
 	String deserialize = "";
 	Class<Username> clazz = Username.class;
 	
 	Field[] fields = clazz.getFields();
+	
 	List<String> users = Stream.of(countries.split(",", -1))
-			  .collect(Collectors.toList());
-	System.out.println("campos" + fields[0].getName() + "tamanho" + fields.length);
-	for (int i = 0; i < fields.length; i++) {
+			  .collect(Collectors.toList())
+;
+	for (int i = 0; i < users.size(); i++) {
 		Field fieldID = clazz.getField(fields[i].getName());
 		System.out.println(fieldID.getType());
 		System.out.println(fieldID.getType().getName());

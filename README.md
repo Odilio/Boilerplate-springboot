@@ -1,4 +1,10 @@
 # Boilerplate-springboot
+	Para Iniciar execute a classe Starter passando como parametro 
+	--jasypt.encryptor.password=pass
+	Para gerar uma nova senha criptografada usar o jasypt que está dentro de resources
+	comando pra gerar senha
+	>encrypt.bat input=coder password=pass algorithm=PBEWITHHMACSHA512ANDAES_256 ivGeneratorClassName=org.jasypt.iv.RandomIvGenerator
+	Para Iniciar usando setando o profile por parametro usar a classe StarterProfileArgument e passar --spring.profiles.active=dev como argumento
 	To start just run Starter main class on package com.bootstrap.springboot
 	To access swagger just go to http://localhost:8080/swagger-ui.html
 	Postman Collecions inside folder resources
