@@ -1,36 +1,9 @@
-<<<<<<< HEAD
 package com.bootstrap.springboot.util;
 
+import java.lang.reflect.Field;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import org.modelmapper.ModelMapper;
-
-/**
- * A Simple Converter to DTO from Model
- *
- * @author Odilio Noronha Filho
- */
-public class Converter {
-
-	
-    private static  ModelMapper modelMapper = new ModelMapper();
-	
-	 public static <D> Object toModel(final Object user, Class<D> outClass) {
-			return modelMapper.map(user , outClass);
-
-		}
-	    
-	 public static  <D> List<?> toCollection(List<?> users, Class<D> outClass) {
-			return users.stream()
-					.map(user -> toModel(user, outClass)).collect(Collectors.toList());
-		}
-}
-=======
-package com.bootstrap.springboot.util;
-
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.modelmapper.ModelMapper;
 
@@ -74,8 +47,8 @@ public class Converter {
 
 		}
 		}catch (NumberFormatException e) {
-			logger.error("Formato de parametros da mensagem do kafka incorretos, favor checar topico. "  + mensagemKafka);
-		}catch (Exception e) {
+			e.printStackTrace();
+}catch (Exception e) {
 			e.printStackTrace();
 		}
 		return classe;
@@ -95,11 +68,10 @@ public class Converter {
 			deserialize += fieldID.get(classe) + ",";
 		}
 		}catch (NumberFormatException e) {
-			logger.error("Formato de parametros da mensagem do kafka incorretos, favor checar topico. "  + mensagemKafka);
+			e.printStackTrace();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
 		return deserialize.substring(0, deserialize.length()-1);
 	}
 }
->>>>>>> 11f07b4c55acbfc64922457f8c5add16a142542f
