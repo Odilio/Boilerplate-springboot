@@ -23,7 +23,7 @@ public class Starter {
         .run(args);
     }
     
-    @Component
+   /* @Component
     public class MyRunner implements CommandLineRunner {
      
       @Value("${myProperty}")
@@ -34,5 +34,5 @@ public class Starter {
         System.out.println("My property is = " + myProperty);
       }
      
-    }
+    }*/
 }

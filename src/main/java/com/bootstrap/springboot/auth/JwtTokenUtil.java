@@ -40,7 +40,9 @@ return claimsResolver.apply(claims);
 
 //para retornar qualquer informação do token nos iremos precisar da secret key
 private Claims getAllClaimsFromToken(String token) {
-	return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
+	return Jwts.parser()
+			.setSigningKey(secret)
+			.parseClaimsJws(token).getBody();
 }
 
 //check if the token has expired
