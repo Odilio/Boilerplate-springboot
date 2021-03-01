@@ -74,4 +74,8 @@ public class Converter {
 		}
 		return deserialize.substring(0, deserialize.length()-1);
 	}
+	
+	private String gerarPiPullNext() { 			  
+		return Base64.getEncoder().encodeToString(LocalDateTime.now().toString().getBytes());		
+	}
 }
