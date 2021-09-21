@@ -1,0 +1,12 @@
+apiVersion: backstage.io/Boilerplate-springboot
+kind: Component
+metadata:
+  name: Boilerplate-springboot
+  description: Boilerplate-springboot
+spec:
+  type: website
+  lifecycle: production
+  owner: artist-relations-team
+  system: artist-engagement-portal
+  providesApis:
+    - artist-api
