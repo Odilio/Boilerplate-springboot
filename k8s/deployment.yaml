@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microservice-hexagonal
+spec:
+  selector:
+    matchLabels:
+      app: microservice-hexagonal
+  template:
+    metadata:
+      labels:
+        app: microservice-hexagonal
+    spec:
+      dnsConfig:
+        options:
+          - name: single-request-reopen
+      containers:
+        - name: microservice-hexagonal
+          image: softfocus/microservice-hexagonal
+          ports:
+            - containerPort: 8090

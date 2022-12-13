@@ -15,7 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-@Configuration
+@Configuration			
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -51,7 +51,7 @@ public AuthenticationManager authenticationManagerBean() throws Exception {
 protected void configure(HttpSecurity httpSecurity) throws Exception {
 	httpSecurity.csrf().disable()
 	// Não cheque essas requisições
-	.authorizeRequests().antMatchers("/customers/{id}","/customers","/customers/paged","/questions/paged","/questions/sorted","/questions","/authenticate","/v2/api-docs", "/configuration/ui", "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html", "/webjars/**").permitAll().
+	.authorizeRequests().antMatchers("/customers/**","/customers","/authenticate","/v2/api-docs", "/configuration/ui", "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html", "/webjars/**").permitAll().
 	// Qualquer outra requisição deve ser checada
 	anyRequest().authenticated().and().
 	exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
